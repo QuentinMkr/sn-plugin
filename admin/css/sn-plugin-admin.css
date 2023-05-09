@@ -1,0 +1,59 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ .column-lot, .column-title, .column-category, .column-tag, .column-language, .column-nl, .column-site, .column-price, .column-action {
+	vertical-align:top !important;
+    font-size: 14px !important;
+    color: #50575e !important;
+    font-weight: inherit !important;
+}
+
+.purchase_button{
+    background-color: #009CE0 !important;
+    color: white !important;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.purchase_button:hover{
+    cursor: pointer;
+}
+
+.header-sn-plugin h2{
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.header-sn-plugin img{
+    padding-left: 10px;
+}
+
+.sn-credits{
+    background: #009CE0 !important;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.dashicons-insert-sn{
+    color: #009CE0 !important;
+    margin-left: 10px;
+}
+
+.sn-purchase-link{
+    text-decoration: none !important;
+}
+
+.posted{
+    color: green !important;
+}
+
+.notposted{
+    color: red !important;
+}
+
+
