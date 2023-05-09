@@ -31,7 +31,7 @@ Pour utiliser le plugin, vous aurez besoin de :
 
 == Installation ==
 
-1. Téléchargez la dernière version du plugin à partir du dépôt de plugins WordPress ([ici](https://fr.wordpress.org/plugins/...)).
+1. Téléchargez la dernière version du plugin à partir du dépôt de plugins WordPress ([ici](https://github.com/QuentinMkr/sn-plugin)).
 2. Téléversez les fichiers du plugin dans le répertoire /wp-content/plugins/sn-plugin, ou installez le plugin directement à partir de l'écran des plugins de WordPress.
 3. Activez le plugin depuis l'écran "Plugins" de WordPress.
 4. Saisissez votre clé API sur la page des paramètres du plugin.
