@@ -98,7 +98,7 @@ class Sn_Plugin_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sn-plugin-admin.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( 'easytimer', plugin_dir_url( __FILE__ ) . 'js/easytimer.js', [], $this->version);
-        wp_enqueue_script('notiflix', 'https://cdn.jsdelivr.net/npm/notiflix@3.2.5', array('jquery'), $this->version, false);
+        wp_enqueue_script('notiflix', plugin_dir_url( __FILE__ ) . 'js/notiflix.js', array('jquery'), $this->version, false);
 
 		$options = get_option('sn_options');
 
@@ -115,16 +115,16 @@ class Sn_Plugin_Admin {
 	public function require()
     {
         require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-plugin-menu.php');
-        add_action('plugins_loaded', array('SnAdminMenu', 'get_instance'));
+        add_action('plugins_loaded', array('Savage_Note_AdminMenu', 'get_instance'));
 
 		require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-ajax.php');
-        add_action('plugins_loaded', array('SnAjax', 'get_instance'));
+        add_action('plugins_loaded', array('Savage_Note_Ajax', 'get_instance'));
 
 		require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-settings.php');
-        add_action('plugins_loaded', array('SnSettings', 'get_instance'));
+        add_action('plugins_loaded', array('Savage_Note_Settings', 'get_instance'));
 
 		require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-helpers.php');
-        add_action('plugins_loaded', array('SnHelpers', 'get_instance'));
+        add_action('plugins_loaded', array('Savage_Note_Helpers', 'get_instance'));
     }
 
 }

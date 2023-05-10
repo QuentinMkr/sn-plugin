@@ -1,7 +1,7 @@
 <?php
 require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-api.php');
 
-class SnListPurchaseTable extends WP_List_Table
+class Savage_Note_ListPurchaseTable extends WP_List_Table
 {
     private $table_data;
 
@@ -28,7 +28,7 @@ class SnListPurchaseTable extends WP_List_Table
         isset($_REQUEST['s']) && !empty($_REQUEST['s']) ? $data['search'] = sanitize_text_field( $_REQUEST['s'] ) : $data['search'] = '';
         isset($_REQUEST['category']) && !empty($_REQUEST['category']) ? $data['category'] = absint( $_REQUEST['category'] ) : $data['category'] = '';
 
-        $api = new SnApi();
+        $api = new Savage_Note_Api();
         $this->process_bulk_action();
 
        
@@ -178,7 +178,7 @@ class SnListPurchaseTable extends WP_List_Table
 
     function process_bulk_action()
     {
-        $api = new SnApi;
+        $api = new Savage_Note_Api;
         $action = $this->current_action();
 
         switch ( $action ) {
@@ -194,7 +194,7 @@ class SnListPurchaseTable extends WP_List_Table
 
     function extra_tablenav( $which ) {
 
-        $api = new SnApi();
+        $api = new Savage_Note_Api();
 
         $tags = $api->get('/tags');
         $categories = $api->get('/categories');

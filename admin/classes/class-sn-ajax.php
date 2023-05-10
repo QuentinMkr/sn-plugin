@@ -1,7 +1,7 @@
 <?php
 
 
-class SnAjax
+class Savage_Note_Ajax
 {
     protected static $instance;
 
@@ -24,8 +24,8 @@ class SnAjax
         require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-api.php');
         require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-helpers.php');
 
-        $this->api = new SnApi();
-        $this->helpers = new SnHelpers();
+        $this->api = new Savage_Note_Api();
+        $this->helpers = new Savage_Note_Helpers();
     }
 
     public static function get_instance()

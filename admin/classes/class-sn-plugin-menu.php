@@ -1,6 +1,6 @@
 <?php
 
-class SnAdminMenu
+class Savage_Note_AdminMenu
 {
     protected static $instance;
 
@@ -65,7 +65,7 @@ class SnAdminMenu
     }
 
     public function articles(){
-        $tableArticles = new SnListArticlesTable();
+        $tableArticles = new Savage_Note_ListArticlesTable();
         $src = SAVAGE_NOTE_URL . 'admin/assets/img/cropped-savage-note-favicon-32x32.png';
         ?>
         <div class="wrap">
@@ -77,7 +77,7 @@ class SnAdminMenu
             
         
                 <form method="get" >
-                    <input type="hidden" name="page" value="<?php echo sanitize_text_field( $_REQUEST['page'] ) ?>"/>
+                    <input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ) ?>"/>
 
                     <?php
 
@@ -96,7 +96,7 @@ class SnAdminMenu
     }
 
     public function lots(){
-        $table = new SnListTable();
+        $table = new Savage_Note_ListTable();
         $src = SAVAGE_NOTE_URL . 'admin/assets/img/cropped-savage-note-favicon-32x32.png';
 
         ?>
@@ -110,7 +110,7 @@ class SnAdminMenu
         
             <form method="get">
 
-                <input type="hidden" name="page" value="<?php echo sanitize_text_field( $_REQUEST['page'] ) ?>"/>
+                <input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ) ?>"/>
 
                 <?php
 
@@ -130,10 +130,10 @@ class SnAdminMenu
     }
 
     public function purchase(){
-        $tablePurchase = new SnListPurchaseTable();
+        $tablePurchase = new Savage_Note_ListPurchaseTable();
         $src = SAVAGE_NOTE_URL . 'admin/assets/img/cropped-savage-note-favicon-32x32.png';
 
-        $api = new SnApi();
+        $api = new Savage_Note_Api();
         $credits = $api->get('/credits');
         ?>
         <div class="wrap">
@@ -157,7 +157,7 @@ class SnAdminMenu
                 </a>
             </div> 
             <form method="get">
-                <input type="hidden" name="page" value="<?php echo sanitize_text_field( $_REQUEST['page'] ) ?>"/>
+                <input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ) ?>"/>
 
                 <?php
 
@@ -193,7 +193,7 @@ class SnAdminMenu
         );
         add_screen_option( 'per_page', $args );
     
-        $table_lots = new SnListTable();
+        $table_lots = new Savage_Note_ListTable();
     
     }
 
@@ -214,7 +214,7 @@ class SnAdminMenu
         );
         add_screen_option( 'per_page', $args );
     
-        $table = new SnListArticlesTable();
+        $table = new Savage_Note_ListArticlesTable();
     
     }
 
@@ -235,7 +235,7 @@ class SnAdminMenu
         );
         add_screen_option( 'per_page', $args );
     
-        $table_purchase = new SnListPurchaseTable();
+        $table_purchase = new Savage_Note_ListPurchaseTable();
     
     }
     

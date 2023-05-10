@@ -1,6 +1,6 @@
 <?php
 
-class SnApi
+class Savage_Note_Api
 {
     private $authorization = '';
     private $api_url = "https://app.savage-note.com/api/v2";

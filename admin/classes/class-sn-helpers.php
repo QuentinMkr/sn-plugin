@@ -1,6 +1,6 @@
 <?php
 
-class SnHelpers{
+class Savage_Note_Helpers{
 
     protected static $instance;
 
@@ -49,6 +49,8 @@ class SnHelpers{
     }
 
     public function insert_post($article, $data = ''){
+        date_default_timezone_set(wp_timezone_string());
+
         $options = get_option('sn_options');
 
         empty($data) ? $status = $options['status'] : $status = $data;
@@ -96,7 +98,7 @@ class SnHelpers{
 
                 wp_update_attachment_metadata($id_image, $attach_data);
                 
-                $new_name = glob('../wp-content/uploads' . $dir['subdir'] . '/*' . $article['slug'] . '-' . $i . '*1024*');
+                $new_name = glob( $dir['basedir'] . $dir['subdir'] . '/*' . $article['slug'] . '-' . $i . '*1024*');
 
                 if(!empty($new_name[0])){
                     
@@ -132,7 +134,7 @@ class SnHelpers{
 
         $article['content'] = str_replace('<body>', '', $article['content']);
         $article['content'] = str_replace('</body>', '', $article['content']);
-
+        
 
         $new_post = [
             'post_title' => $article['title'],

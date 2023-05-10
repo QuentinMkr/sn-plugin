@@ -2,7 +2,7 @@
 require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-api.php');
 require_once(SAVAGE_NOTE_PATH . 'admin/classes/class-sn-helpers.php');
 
-class SnListArticlesTable extends WP_List_Table
+class Savage_Note_ListArticlesTable extends WP_List_Table
 {
     private $table_data;
 
@@ -33,7 +33,7 @@ class SnListArticlesTable extends WP_List_Table
         isset($_REQUEST['site']) && !empty($_REQUEST['site']) ? $data['site'] = sanitize_text_field($_REQUEST['site']) : $data['site'] = '';
         isset($_REQUEST['published']) && !empty($_REQUEST['published']) ? $data['published'] = sanitize_text_field($_REQUEST['published']) : $data['published'] = '';
 
-        $api = new SnApi();
+        $api = new Savage_Note_Api();
         $this->process_bulk_action();
 
         $this->table_data = $api->get('/my-articles', $data);
@@ -211,8 +211,8 @@ class SnListArticlesTable extends WP_List_Table
 
     function process_bulk_action()
     {
-        $api = new SnApi();
-        $helpers = new SnHelpers();
+        $api = new Savage_Note_Api();
+        $helpers = new Savage_Note_Helpers();
         $action = $this->current_action();
 
         switch ( $action ) {
@@ -279,7 +279,7 @@ class SnListArticlesTable extends WP_List_Table
 
     function extra_tablenav( $which ) {
 
-        $api = new SnApi();
+        $api = new Savage_Note_Api();
 
         $tags = $api->get('/tags');
         $categories = $api->get('/categories');

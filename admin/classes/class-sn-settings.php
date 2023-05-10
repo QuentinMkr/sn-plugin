@@ -1,6 +1,6 @@
 <?php
 
-class SnSettings
+class Savage_Note_Settings
 {
     protected static $instance;
 
