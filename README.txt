@@ -6,7 +6,7 @@ Tested up to: 6.2
 Stable tag: 2.2.0
 Requires PHP: 8.0
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
 Ce plugin permet la connexion à l'API Savage Note pour importer ou acheter vos articles.
 
