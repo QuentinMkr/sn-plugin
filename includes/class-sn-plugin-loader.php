@@ -3,7 +3,7 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       https://com-maker.fr
+ * @link       https://www.savage-note.com/
  * @since      1.0.0
  *
  * @package    Sn_Plugin

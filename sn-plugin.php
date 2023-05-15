@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://com-maker.fr
+ * @link              https://www.savage-note.com/
  * @since             2.2.0
  * @package           Sn_Plugin
  *
@@ -17,8 +17,8 @@
  * Plugin URI:        https://www.savage-note.com
  * Description:       Connectez-vous à notre api et récupérez vos articles.
  * Version:           2.2.0
- * Author:            Com Maker
- * Author URI:        https://com-maker.fr
+ * Author:            Savage Note
+ * Author URI:        https://www.savage-note.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       sn-plugin
