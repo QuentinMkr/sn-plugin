@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://com-maker.fr
+ * @link       https://www.savage-note.com/
  * @since      2.0.0
  *
  * @package    Sn_Plugin

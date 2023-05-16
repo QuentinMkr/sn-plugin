@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://com-maker.fr
+ * @link       https://www.savage-note.com/
  * @since      1.0.0
  *
  * @package    Sn_Plugin

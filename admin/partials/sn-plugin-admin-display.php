@@ -5,7 +5,7 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       https://com-maker.fr
+ * @link       https://www.savage-note.com/
  * @since      1.0.0
  *
  * @package    Sn_Plugin

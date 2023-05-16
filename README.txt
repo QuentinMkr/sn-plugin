@@ -6,7 +6,7 @@ Tested up to: 6.2
 Stable tag: 2.2.0
 Requires PHP: 8.0
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
 Ce plugin permet la connexion à l'API Savage Note pour importer ou acheter vos articles.
 
@@ -29,6 +29,12 @@ Pour utiliser le plugin, vous aurez besoin de :
 - Une clé API valide de Savage Note.
 - Un site WordPress fonctionnant avec la version 6.0 ou ultérieure.
 
+== Screenshots ==
+
+1. Paramètrage du plugin
+2. Page d'importation de vos articles
+3. Page d'achat des lots Savage Note
+
 == Installation ==
 
 1. Téléchargez la dernière version du plugin à partir du dépôt de plugins WordPress ([ici](https://github.com/QuentinMkr/sn-plugin)).
@@ -50,8 +56,6 @@ Vous pouvez utiliser la fonction de recherche de la partie "Acheter des articles
 = Comment puis-je intégrer les articles achetés à mon site web ? =
 
 Une fois que vous avez acheté des articles, vous pouvez les importer directement dans votre site WordPress en un clic. L'article sera alors automatiquement intégré à votre bibliothèque d'articles et pourra être modifié, publié ou programmé pour une publication future selon vos besoins. Les images seront également sauvegardées sur votre site.
-
-== Screenshots ==
 
 == Changelog ==
 
