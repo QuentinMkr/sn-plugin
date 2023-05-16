@@ -48,7 +48,7 @@ class Savage_Note_Helpers{
         }
     }
 
-    public function insert_post($article, $data = ''){
+    public function insert_post($article, $data = '', $custom_date = ''){
         date_default_timezone_set(wp_timezone_string());
 
         $options = get_option('sn_options');
@@ -63,6 +63,8 @@ class Savage_Note_Helpers{
 
         $images = $xml->xpath('//img');
 
+
+        $publish_date = $custom_date !== '' ? $custom_date : date('Y-m-d H:i:s');
 
         if(count($images) !== 0){
             for($i = 0; $i < count($images); $i++){
@@ -89,7 +91,7 @@ class Savage_Note_Helpers{
                     'post_title' => $article['slug'] . '-' . $i,
                     'post_content' => '',
                     'post_status' => 'inherit',
-                    'post_date' => date('Y-m-d H:i:s'),
+                    'post_date' => $publish_date,
                 );
                 
                 $id_image = wp_insert_attachment($new_image, $path);
@@ -141,7 +143,7 @@ class Savage_Note_Helpers{
             'post_name' => $this->generate_unique_slug($article['slug']),
             'post_content' => $article['content'],
             'post_status' => $status,
-            'post_date' => date('Y-m-d H:i:s'),
+            'post_date' => $publish_date,
             'post_author' => $options['author'],
             'post_type' => $options['post_type'],
         ];
@@ -176,7 +178,7 @@ class Savage_Note_Helpers{
                 'post_title' => basename($article['thumbnail']),
                 'post_content' => '',
                 'post_status' => 'inherit',
-                'post_date' => date('Y-m-d H:i:s'),
+                'post_date' => $publish_date,
             );
 
             $id_image = wp_insert_attachment($new_image, $path);

@@ -74,6 +74,7 @@ class Sn_Plugin_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sn-plugin-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'zebra', plugin_dir_url( __FILE__ ) . 'css/zebra_datepicker.min.css', array(), $this->version, 'all' );
 
 	}
 
@@ -99,6 +100,7 @@ class Sn_Plugin_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sn-plugin-admin.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( 'easytimer', plugin_dir_url( __FILE__ ) . 'js/easytimer.js', [], $this->version);
         wp_enqueue_script('notiflix', plugin_dir_url( __FILE__ ) . 'js/notiflix.js', array('jquery'), $this->version, false);
+        wp_enqueue_script('zebrajs', plugin_dir_url( __FILE__ ) . 'js/zebra_datepicker.min.js', array('jquery'), $this->version, false);
 
 		$options = get_option('sn_options');
 

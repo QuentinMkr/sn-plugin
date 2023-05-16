@@ -18,6 +18,7 @@ class Savage_Note_Ajax
         add_action('wp_ajax_snimportarticledraft', [$this, 'snimportarticledraft']);
         add_action('wp_ajax_snimportarticlepublish', [$this, 'snimportarticlepublish']);
         add_action('wp_ajax_snpurchaselot', [$this, 'snpurchaselot']);
+        add_action('wp_ajax_savage_add_scheduled_post', [$this, 'add_scheduled_post']);
 
         $this->options = get_option('sn_options');
 
@@ -197,6 +198,59 @@ class Savage_Note_Ajax
 
     function sn_wpseo_metadesc($desc){
         return $desc;
+    }
+
+    public function add_scheduled_post(){
+
+        date_default_timezone_set(wp_timezone_string());
+
+
+        if( !isset( $_POST['date'] ) || !isset( $_POST['time'] ) || !isset( $_POST['recurence'] ) || !isset( $_POST['element']) ){
+
+            $error = new WP_Error( '001', 'Error in data provided');
+            wp_send_json_error( $error );
+
+        }
+
+        $ids = $_POST['element'];
+
+        $date = $_POST['date'];
+
+        $time = $_POST['time'];
+
+        $recurence = $_POST['recurence'];
+
+        foreach($ids as $k => $id){
+
+            // premier élément
+            if( $k === array_key_first( $ids ) ){
+
+                $publish_date = $date;
+
+            }else{
+
+                $d1 = new DateTime( $date );
+                
+                $d1->modify("+{$time} {$recurence}");
+
+                $publish_date = $d1->format('Y-m-d H:i:s');
+                $date = $d1->format('Y-m-d');
+            }
+
+            $article = $this->api->get('/article/' . absint( $id ) );
+
+            if( date('Y-m-d H:i:s', time()) == $publish_date  ){
+                $status = 'publish';
+            }else{
+                $status = 'future';
+            }
+
+            $this->helpers->insert_post( $article, $status, $publish_date);
+
+        }
+
+        wp_send_json_success( 'La planification est en cours, vous pouvez continuer votre navigation pendant ce temps !' );
+
     }
 
 }

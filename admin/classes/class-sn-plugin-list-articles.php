@@ -307,7 +307,6 @@ class Savage_Note_ListArticlesTable extends WP_List_Table
                 ?>
 
             </select>
-            <input type="submit" value="Filtrer" class="button action" id="category-search" name="category-search">
 		</div>
 		<div class="actions alignleft">
             <select name="thematique" id="filter-thematique">
@@ -328,7 +327,6 @@ class Savage_Note_ListArticlesTable extends WP_List_Table
                 ?>
 
             </select>
-            <input type="submit" value="Filtrer" class="button action" id="thematique-search" name="thematique-search">
 		</div>
 
         <div class="actions alignleft">
@@ -350,7 +348,6 @@ class Savage_Note_ListArticlesTable extends WP_List_Table
                 ?>
 
             </select>
-            <input type="submit" value="Filtrer" class="button action" id="site-search" name="site-search">
 		</div>
 
         <div class="actions alignleft">
@@ -372,6 +369,12 @@ class Savage_Note_ListArticlesTable extends WP_List_Table
                 
             </select>
             <input type="submit" value="Filtrer" class="button action" id="published-search" name="published-search">
+		</div>
+
+        <div class="actions alignleft">
+
+            <button class="button action" id="sn-schedule">Planifier</button>
+
 		</div>
        
 

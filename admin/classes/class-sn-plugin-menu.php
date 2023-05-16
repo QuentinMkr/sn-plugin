@@ -67,6 +67,8 @@ class Savage_Note_AdminMenu
     public function articles(){
         $tableArticles = new Savage_Note_ListArticlesTable();
         $src = SAVAGE_NOTE_URL . 'admin/assets/img/cropped-savage-note-favicon-32x32.png';
+        $schedule = SAVAGE_NOTE_URL . 'admin/assets/img/schedule.svg';
+        $calendar = SAVAGE_NOTE_URL . 'admin/assets/img/calendar.svg';
         ?>
         <div class="wrap">
             <div class="header-sn-plugin">
@@ -92,6 +94,60 @@ class Savage_Note_AdminMenu
                 </form>
 
         </div>
+
+        <div class="sn-popup">
+
+            <div class="sn-popup-container">
+
+                <div class="sn-popup-header">
+                    <img class="sn-popup-schedule-icon" src="<?php echo esc_url( $schedule ) ?>" alt="">
+                    <div class="sn-popup-title">
+                        <h3>Gestion de la planification</h3>
+                        <span class="sn-popup-subtitle">Planifiez vos articles sur la durée de votre choix !</span>
+                    </div>
+                    <span id="sn-popup-close">&times;</span>
+                </div>
+
+                <div class="sn-popup-content">
+
+                    <div class="sn-start-date">
+                        <span>Date de début*</span>
+                        <div class="input-with-icon">
+                            <span class="input-icon">
+                              <img src="<?php echo esc_url( $calendar ) ?>" alt="Icône" width="20" height="20">
+                            </span>
+                            <input id="datepicker" type="text" placeholder="JJ/MM/AAAA"/>
+                        </div>
+                    </div>
+
+                    <div class="sn-time">
+                        <span>Récurrence*</span>
+                            <div>
+                                Tous les 
+                                <input id="time" type="number" min="1" step="1">
+                                <select id="recurence" >
+                                    <option disabled selected>Heures, jours ...</option>
+                                    <option value="hours">Heure(s)</option>
+                                    <option value="days">Jour(s)</option>
+                                    <option value="weeks">Semaine(s)</option>
+                                    <option value="months">Mois</option>
+                                </select>
+                            </div>
+                            
+                    </div>
+
+
+
+                </div>
+
+                <div class="sn-popup-footer">
+                    <button id="sn-confirm-schedule">Planifier</button>
+                </div>
+
+            </div>
+
+        </div>
+
         <?php
     }
 

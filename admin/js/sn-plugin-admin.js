@@ -2,8 +2,6 @@
 
 	$(window).on('load', function () {
 
-		var timerInstance = new easytimer.Timer();
-
 		// Import d'un lot ( Respecte les paramètres de publication )
 		jQuery(".snimport").click(function (obj) {
 			var title = jQuery(this).attr("data-title");
@@ -131,7 +129,7 @@
 
       		return jQuery.post(ajaxurl, data, function (response) {
 				console.log(response);
-        Notiflix.Loading.remove();
+        	Notiflix.Loading.remove();
 
         if (response.data.success == 1) {
           Notiflix.Report.success(
@@ -181,12 +179,143 @@
           }
         }
       });
-    });
+    	});
+
+		var time = new Date();
+
+		// flatpickr("#datepicker", {
+		// 	altInput: true,
+		// 	altFormat: "d-m-Y H:i:S",
+		// 	dateFormat: "Y-m-d H:i:S",
+		// 	locale: "fr",
+		// 	enableTime: true,
+		// 	minDate: "today",
+		// 	minTime: time.getHours() + ":" + time.getMinutes(),
+		// });
+
+		$('#datepicker').Zebra_DatePicker({
+			days: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+			default_position: 'above',
+			format: 'd-m-Y H:i',
+			lang_clear_date: 'Effacer',
+			months: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+			show_select_today: 'Aujourd\'hui',
+			start_date: new Date()
+
+		})
+
+		$('#datepicker').on('click', function () {
+			$('#datepicker').removeClass('sn-input-error');
+			$('.sn-error-date').remove();
+		})
+
+		$('#time').on('click', function () {
+			$('#time').removeClass('sn-input-error');
+			$('#recurence').removeClass('sn-input-error');
+			$('.sn-error-time').remove();
+		})
+
+		$('#recurence').on('click', function () {
+			$('#time').removeClass('sn-input-error');
+			$('#recurence').removeClass('sn-input-error');
+			$('.sn-error-time').remove();
+		})
+
+
+		$('#sn-schedule').click(function (e) {
+			
+			e.preventDefault();
+
+			const element = $('input[type="checkbox"][name="element[]"]:checked');
+
+			if( !element.length > 0 ){
+
+				Notiflix.Notify.init({
+					position: 'right-bottom',
+					clickToClose: true
+				})
+
+				Notiflix.Notify.failure('Veuillez sélectionner au moins un élément');
+				
+				return;
+			}
+
+			const popup = $('.sn-popup')
+			const close = $('#sn-popup-close')
+
+			popup.fadeIn(500);
+
+			close.on('click', function(){
+				popup.fadeOut();
+			});
+
+			$(document).on('click', function(event) {
+				if ($(event.target).is(popup)) {
+					popup.fadeOut();
+				}
+			});
+		
+		})
+
+		$('#sn-confirm-schedule').click(function (e) {
+
+			const date = $('#datepicker').val()
+
+			if( date == ''  ){
+				$('#datepicker').addClass('sn-input-error');
+				if( $('.sn-error-date').length == 0 ){
+					$('.sn-start-date').append('<span class="sn-error-message sn-error-date">Veuillez choisir une date.</span>');
+				}
+				return;
+			}
+
+			const time = $('#time').val()
+
+			if( time == ''  ){
+				$('#time').addClass('sn-input-error');
+				$('#recurence').addClass('sn-input-error');
+				if( $('.sn-error-time').length == 0 ){
+					$('.sn-time').append('<span class="sn-error-message sn-error-time">Veuillez choisir une récurrence valide.</span>');
+				}
+				return;
+			}
+
+			const recurence = $('#recurence').val()
+
+			if( recurence == '' || recurence == null  ){
+				$('#time').addClass('sn-input-error');
+				$('#recurence').addClass('sn-input-error');
+				if( $('.sn-error-time').length == 0 ){
+					$('.sn-time').append('<span class="sn-error-message sn-error-time">Veuillez choisir une récurrence valide.</span>');
+				}
+				return;
+			}
+
+			const element = $('input[type="checkbox"][name="element[]"]:checked');
+
+			var values = element.map(function() {
+				return $(this).val(); // Récupérer la valeur de chaque élément coché
+			}).get();
+
+			Notiflix.Report.info('La planification est en cours', 'L\'importation et la planification des articles est en cours. Vous pouvez continuer votre navigation pendant ce temps.', 'Ok');
+
+			const data = {
+				action: 'savage_add_scheduled_post',
+				date: date,
+				time: time,
+				recurence: recurence,
+				element: values
+			}
+
+			jQuery.post(ajaxurl, data, function (response) {
+
+			});
+
+			
+			
+		})
 
 
     });
-
-
-
 })
 (jQuery);
